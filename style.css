@@ -27,3 +27,65 @@ pre {
   color: white;
   padding: 16px;
 }
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+nav ul li {
+  height: 30px;
+}
+
+header h1, header h2 {
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 3em;
+}
+
+header h2 {
+  font-size: 1.5em;
+}
+
+header button {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+header, main {
+  margin-bottom: 20px;
+}
+
+button {
+  font-size: 1em;
+  background-color: blue;
+  border-color: blue;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+main code {
+  line-height: 1.5em;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+main pre {
+  margin-bottom: 60px;
+}
+
+.logo {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.logo a, .logo a:visited {
+  text-decoration: none;
+  color: inherit;
+}
