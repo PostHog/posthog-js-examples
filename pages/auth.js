@@ -2,7 +2,7 @@ import Link from 'next/link'
 import useSWR from 'swr'
 import { supabase } from '../utils/initSupabase'
 import { useEffect, useState } from 'react'
-import Auth from './../components/Auth'
+import Auth from '../components/Auth'
 import { useUser } from '../lib/UserContext'
 
 const fetcher = (url, token) =>
@@ -15,7 +15,7 @@ const fetcher = (url, token) =>
 const Index = () => {
   const { user, session } = useUser()
   const { data, error } = useSWR(session ? ['/api/getUser', session.access_token] : null, fetcher)
-  const [authView, setAuthView] = useState('sign_in')
+  const [authView, setAuthView] = useState('sign_up')
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {

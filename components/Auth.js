@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
+const supabaseOptions = {
+  redirectTo: 'http://localhost:3000/auth'
+}
+
 function Auth(props) {
   const { supabaseClient, authView, setAuthView } = props
 
@@ -17,7 +21,7 @@ function Auth(props) {
     const { error: signInError } = await supabaseClient.auth.signIn({
       email,
       password,
-    })
+    }, supabaseOptions)
     if (signInError) setError(signInError.message)
 
     setLoading(false)
@@ -31,7 +35,7 @@ function Auth(props) {
     const { error: signUpError } = await supabaseClient.auth.signUp({
       email,
       password,
-    })
+    }, supabaseOptions)
     if (signUpError) setError(signUpError.message)
 
     setLoading(false)
@@ -53,7 +57,7 @@ function Auth(props) {
     setError('')
     setMessage('')
     setLoading(true)
-    const { error } = await supabaseClient.auth.signIn({ email })
+    const { error } = await supabaseClient.auth.signIn({ email }, supabaseOptions)
     if (error) setError(error.message)
     else setMessage('Check your email for the magic link')
     setLoading(false)
