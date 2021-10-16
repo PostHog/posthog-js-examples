@@ -154,11 +154,6 @@
   "resolved" "https://registry.npmjs.org/@opentelemetry/context-base/-/context-base-0.14.0.tgz"
   "version" "0.14.0"
 
-"@sentry/types@^6.11.0":
-  "integrity" "sha512-Vrz5CdhaTRSvCQjSyIFIaV9PodjAVFkzJkTRxyY7P77RcegMsRSsG1yzlvCtA99zG9+e6MfoJOgbOCwuZids5A=="
-  "resolved" "https://registry.npmjs.org/@sentry/types/-/types-6.13.3.tgz"
-  "version" "6.13.3"
-
 "@supabase/gotrue-js@^1.18.0":
   "integrity" "sha512-kGKy6EkMwait89yUYQF7umUDCeOsnNZD/rrfRTDH5jVDwuudvrF/5Dw0mBMHh8lQdZDFaF6Q8bVHlD3vXguGdw=="
   "resolved" "https://registry.npmjs.org/@supabase/gotrue-js/-/gotrue-js-1.18.0.tgz"
@@ -1580,11 +1575,6 @@
   "resolved" "https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz"
   "version" "2.1.0"
 
-"fflate@^0.4.1":
-  "integrity" "sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA=="
-  "resolved" "https://registry.npmjs.org/fflate/-/fflate-0.4.8.tgz"
-  "version" "0.4.8"
-
 "figgy-pudding@^3.5.1":
   "integrity" "sha512-0btnI/H8f2pavGMN8w40mlSKOfTK2SVJmBfBeVIj3kNw0swwgzyRq0d5TJVOwodFmtvpPeWPN/MCcfuWF0Ezbw=="
   "resolved" "https://registry.npmjs.org/figgy-pudding/-/figgy-pudding-3.5.2.tgz"
@@ -2970,15 +2960,6 @@
     "nanoid" "^3.1.16"
     "source-map" "^0.6.1"
 
-"posthog-js@^1.14.3":
-  "integrity" "sha512-xxQJCp9mPlgIDp0lnkiE/4mvHpotp/ieoP7fTS0Id23zMjpmKRKiggAqsZnkVw0ZA3UV2yIgP3UrLdxwc5L94g=="
-  "resolved" "https://registry.npmjs.org/posthog-js/-/posthog-js-1.14.3.tgz"
-  "version" "1.14.3"
-  dependencies:
-    "@sentry/types" "^6.11.0"
-    "fflate" "^0.4.1"
-    "rrweb-snapshot" "^1.1.7"
-
 "prebuild-install@^6.0.0":
   "integrity" "sha512-h2ZJ1PXHKWZpp1caLw0oX9sagVpL2YTk+ZwInQbQ3QqNd4J03O6MpFNmMTJlkfgPENWqe5kP0WjQLqz5OjLfsw=="
   "resolved" "https://registry.npmjs.org/prebuild-install/-/prebuild-install-6.0.0.tgz"
@@ -3383,11 +3364,6 @@
   dependencies:
     "hash-base" "^3.0.0"
     "inherits" "^2.0.1"
-
-"rrweb-snapshot@^1.1.7":
-  "integrity" "sha512-kpoWi2gx1AmX2PZU8XNKMvIvh5WPSz9lKfyHs9GYvczYE2H7VNrmPf7+rDin8Y+HcJ9Tu7x9id4JOCD2PsSPQA=="
-  "resolved" "https://registry.npmjs.org/rrweb-snapshot/-/rrweb-snapshot-1.1.9.tgz"
-  "version" "1.1.9"
 
 "run-queue@^1.0.0", "run-queue@^1.0.3":
   "integrity" "sha1-6Eg5bwV9Ij8kOGkkYY4laUFh7Ec="
