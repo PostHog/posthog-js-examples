@@ -71,8 +71,8 @@ function Auth(props) {
       {authView === 'sign_in' ? (
         <>
           <h4>Sign in</h4>
-          <form onSubmit={(e) => handleSignIn(e)}>
-            <label for="sign-in__email">Email</label>
+          <form id="sign_in_form" onSubmit={(e) => handleSignIn(e)}>
+            <label htmlFor="sign-in__email">Email</label>
             <input
               id="sign-in__email"
               label="Email address"
@@ -81,7 +81,7 @@ function Auth(props) {
               defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label for="sign-in__password">Password</label>
+            <label htmlFor="sign-in__password">Password</label>
             <input
               id="sign-in__password"
               label="Password"
@@ -101,8 +101,8 @@ function Auth(props) {
       ) : authView === 'sign_up' ? (
         <>
           <h4>Sign up</h4>
-          <form onSubmit={(e) => handleSignUp(e)}>
-            <label for="sign-up__email">Email</label>
+          <form id="sign_up_form" onSubmit={(e) => handleSignUp(e)}>
+            <label htmlFor="sign-up__email">Email</label>
             <input
               id="sign-up__email"
               label="Email address"
@@ -111,7 +111,7 @@ function Auth(props) {
               defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label for="sign-up__password">Password</label>
+            <label htmlFor="sign-up__password">Password</label>
             <input
               id="sign-up__password"
               label="Password"
@@ -131,8 +131,8 @@ function Auth(props) {
       ) : authView === 'forgotten_password' ? (
         <>
           <h4>Forgotten password</h4>
-          <form onSubmit={handlePasswordReset}>
-            <label for="forgotten_password__email">Email</label>
+          <form id="forgot_password_form" onSubmit={handlePasswordReset}>
+            <label htmlFor="forgotten_password__email">Email</label>
             <input
               id="forgotten_password__email"
               label="Email address"
@@ -152,7 +152,7 @@ function Auth(props) {
       ) : authView === 'magic_link' ? (
         <>
           <h4>Magic link</h4>
-          <form onSubmit={handleMagicLinkSignIn}>
+          <form id="magic_link_form" onSubmit={handleMagicLinkSignIn}>
             <input
               label="Email address"
               autoComplete="email"
