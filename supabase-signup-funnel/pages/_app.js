@@ -4,7 +4,6 @@ import './../style.css'
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { initPostHog } from '../utils/initPostHog'
 
 export default function MyApp({ Component, pageProps }) {
   
