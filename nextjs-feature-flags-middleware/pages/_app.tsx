@@ -8,14 +8,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Layout
-      title="AB testing with Split"
-      path="feature-flag-split"
+      title="AB testing with PostHog"
+      path="nextjs-feature-flags-middleware"
       deployButton={{
+        repositoryUrl: 'https://github.com/posthog/posthog/posthog-js-examples',
         env: [
-          'SPLIT_ADMIN_API_KEY',
-          'SPLIT_WORKSPACE_ID',
-          'SPLIT_ENVIRONMENT_ID',
-          'NEXT_PUBLIC_SPLIT_SDK_CLIENT_API_KEY',
+          'NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY',
         ],
       }}
     >

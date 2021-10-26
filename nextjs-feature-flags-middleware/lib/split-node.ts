@@ -1,7 +1,4 @@
-import s from './splits.json'
 import { SPLITS } from './split'
-
-type Split = typeof s.objects[0]
 
 /**
  * Returns a treatment from the cached splits, if the value has default rules set it will
@@ -10,22 +7,38 @@ type Split = typeof s.objects[0]
  * NOTE: This code is not production ready, there are many things you can do with Split
  * besides checking for default rules.
  */
-export function getTreatment(key: string, name: SPLITS): string {
-  const splits: Split[] = s.objects
-  const split = splits.find((s) => s.name === name)
+export async function getTreatment(key: string, name: SPLITS): Promise<boolean> {
 
-  if (!split) {
-    throw new Error(`Could not find a split with the name "${name}"`)
-  }
+  const featureEnabled = await isFeatureEnabled(key, name)
 
-  let n = cryptoRandom() * 100
-
-  return split.defaultRule.find((rule) => {
-    n -= rule.size
-    return n <= 0
-  })?.treatment
+  return featureEnabled
 }
 
-function cryptoRandom() {
-  return crypto.getRandomValues(new Uint32Array(1))[0] / (0xffffffff + 1)
+async function isFeatureEnabled(distinctUserId: string, featureName: string): Promise<any> {
+  console.log('isFeatureEnabled', distinctUserId, featureName)
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_POSTHOG_HOST}/decide?v=2`,
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        api_key: process.env.NEXT_PUBLIC_POSTHOG_PROJECT_API_KEY,
+        distinct_id: distinctUserId,
+      }),
+    }
+  )
+
+  if (!res.ok) {
+    throw new Error(
+      `Fetch request to retrieve the list of splits failed with: (${res.status}) ${res.statusText}`
+    )
+  }
+
+  const data = await res.json()
+  console.log(data)
+
+  const featureEnabled = data.featureFlags[featureName] || false
+  console.log('featureEnabled', featureEnabled)
+
+  return featureEnabled
 }
