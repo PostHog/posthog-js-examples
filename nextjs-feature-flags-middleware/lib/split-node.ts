@@ -1,20 +1,9 @@
 import { SPLITS } from './split'
 
 /**
- * Returns a treatment from the cached splits, if the value has default rules set it will
- * randomly pick one based on each rule' percentage.
- *
- * NOTE: This code is not production ready, there are many things you can do with Split
- * besides checking for default rules.
+ * Checks if a feature flag is enabeld.
  */
-export async function getTreatment(key: string, name: SPLITS): Promise<boolean> {
-
-  const featureEnabled = await isFeatureEnabled(key, name)
-
-  return featureEnabled
-}
-
-async function isFeatureEnabled(distinctUserId: string, featureName: string): Promise<any> {
+export async function isFeatureFlagEnabled(distinctUserId: string, featureName: SPLITS): Promise<boolean> {
   console.log('isFeatureEnabled', distinctUserId, featureName)
 
   const res = await fetch(

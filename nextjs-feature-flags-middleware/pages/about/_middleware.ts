@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getTreatment } from '@lib/split-node'
+import { isFeatureFlagEnabled } from '@lib/split-node'
 import { SPLITS } from '@lib/split'
 
 export function middleware(req: NextRequest) {
@@ -11,7 +11,7 @@ export function middleware(req: NextRequest) {
   const flagName = `flag-${SPLITS.NEW_ABOUT_PAGE}`
   const cookie =
     req.cookies[flagName] ||
-    (getTreatment('anonymous', SPLITS.NEW_ABOUT_PAGE) === 'on' ? '1' : '0')
+    (isFeatureFlagEnabled('anonymous', SPLITS.NEW_ABOUT_PAGE) ? '1' : '0')
   const res = NextResponse.rewrite(cookie === '1' ? '/about/b' : '/about')
 
   // Add the cookie if it's not there

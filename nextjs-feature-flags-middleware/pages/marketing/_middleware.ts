@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getTreatment } from '@lib/split-node'
+import { isFeatureFlagEnabled } from '@lib/split-node'
 import { SPLITS } from '@lib/split'
 
 export async function middleware(req: NextRequest) {
@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
   const flagName = `flag-${SPLITS.NEW_MARKETING_PAGE}`
   const cookie =
     req.cookies[flagName] ||
-    (await getTreatment(Math.random().toString(), SPLITS.NEW_MARKETING_PAGE)? '1' : '0')
+    (await isFeatureFlagEnabled(Math.random().toString(), SPLITS.NEW_MARKETING_PAGE)? '1' : '0')
 
   const res = NextResponse.rewrite(
     cookie === '1' ? '/marketing/b' : '/marketing'
