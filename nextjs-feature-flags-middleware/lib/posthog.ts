@@ -1,58 +1,43 @@
-/**
- * List of known active Feature Flags
- */
-export const FEATURE_FLAGS = {
-  NEW_ABOUT_PAGE: 'New_About_Page',
-  NEW_MARKETING_PAGE: 'New_Marketing_Page',
-} as const
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import posthog, { PostHog } from 'posthog-js'
 
-export type FEATURE_FLAGS = typeof FEATURE_FLAGS[keyof typeof FEATURE_FLAGS]
+let POSTHOG_INSTANCE: PostHog
 
-/**
- * Sends an event to Split.io
- *
- * This method works for both the server (including Edge Middleware) and browser
- */
-export async function track(
-  key: string,
-  trafficType: string,
-  eventType: string,
-  value?: number | null,
-  properties?: Record<string, any>
-) {
-  const start = Date.now()
-  
-  // const res = await fetch(`https://events.split.io/api/events`, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     Authorization: `Bearer ${process.env.NEXT_PUBLIC_SPLIT_SDK_CLIENT_API_KEY}`,
-  //   },
-  //   body: JSON.stringify({
-  //     key,
-  //     trafficTypeName: trafficType,
-  //     eventTypeId: eventType,
-  //     environmentName: process.env.SPLIT_ENVIRONMENT_ID,
-  //     value: value ?? null,
-  //     timestamp: Date.now(),
-  //     ...(properties ? { properties } : {}),
-  //   }),
-  // })
+export const usePostHog = (apiKey: string, config?: posthog.Config, name?: string): void => {
+  const router = useRouter()
 
-  // if (!res.ok) {
-  //   const contentType = res.headers.get('Content-Type')
-  //   const data = contentType.includes('application/json')
-  //     ? await res.json()
-  //     : await res.text()
+  if(config.loaded) {
+    // override the existing loaded function so we store get the PostHog instance
+    const oldLoaded = config.loaded
+    config.loaded = (posthog: PostHog) => {
+      setPostHogInstance(posthog)
+      oldLoaded(POSTHOG_INSTANCE)
+    }
+  }
+  else {
+    config.loaded = setPostHogInstance
+  }
 
-  //   throw new Error(
-  //     `Fetch request to send an event to Split failed with: (${
-  //       res.status
-  //     }) ${JSON.stringify(data, null, 2)}`
-  //   )
-  // }
+  useEffect((): () => void => {
+    if(typeof window === undefined ) return
 
-  const end = Date.now()
+    posthog.init(apiKey, config, name)
 
-  console.log(`TRACK: ${end - start} ms`)
+    // Track page views
+    const handleRouteChange = () => posthog.capture('$pageview')
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+}
+
+const setPostHogInstance = (posthog: PostHog) => {
+  POSTHOG_INSTANCE = posthog
+}
+
+export const getPostHogInstance = (): PostHog => {
+  return POSTHOG_INSTANCE
 }

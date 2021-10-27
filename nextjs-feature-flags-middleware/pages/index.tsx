@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie'
+import { getPostHogInstance } from '@lib/posthog'
 import {
   Layout,
   Page,
@@ -7,22 +7,22 @@ import {
   Link,
   Button,
 } from '@vercel/edge-functions-ui'
-import { FEATURE_FLAGS } from '@lib/posthog'
 
 export default function Index() {
-  const removeCookie = (name: string) => {
-    Cookies.remove(name)
+  
+  const resetVariant = () => {
+    const posthog = getPostHogInstance()
+    posthog.reset(true)
     window.location.reload()
   }
 
   return (
     <Page>
       <Text variant="h2" className="mb-6">
-        AB testing with Split
+        AB testing with PostHog
       </Text>
       <Text className="mb-4">
-        The about and marketing pages will each render a different version with
-        a 50% chance:
+        The about and marketing pages will each render a different version depending on the feature flag % of users set within PostHog:
       </Text>
       <List className="mb-4">
         <li>
@@ -33,22 +33,15 @@ export default function Index() {
         </li>
       </List>
       <Text className="text-lg mb-4">
-        Click the buttons below if you want to change the current variant (each
-        variant has a 50% chance)
+        Click the button below to reset the variant. Each variant will have a % chance based on the Feature Flag setting in PostHog.
       </Text>
       <div>
         <Button
           variant="secondary"
           className="mr-2.5"
-          onClick={() => removeCookie(`flag-${FEATURE_FLAGS.NEW_ABOUT_PAGE}`)}
+          onClick={() => resetVariant()}
         >
-          Remove /about cookie & reload
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={() => removeCookie(`flag-${FEATURE_FLAGS.NEW_MARKETING_PAGE}`)}
-        >
-          Remove /marketing cookie & reload
+          Reset feature flags
         </Button>
       </div>
     </Page>

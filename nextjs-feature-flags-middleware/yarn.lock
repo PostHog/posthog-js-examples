@@ -197,6 +197,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@sentry/types@^6.11.0":
+  version "6.13.3"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-6.13.3.tgz#63ad5b6735b0dfd90b3a256a9f8e77b93f0f66b2"
+  integrity sha512-Vrz5CdhaTRSvCQjSyIFIaV9PodjAVFkzJkTRxyY7P77RcegMsRSsG1yzlvCtA99zG9+e6MfoJOgbOCwuZids5A==
+
 "@types/js-cookie@^2.2.7":
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.7.tgz#226a9e31680835a6188e887f3988e60c04d3f6a3"
@@ -954,6 +959,11 @@ fastq@^1.6.0:
   integrity sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==
   dependencies:
     reusify "^1.0.4"
+
+fflate@^0.4.1:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.4.8.tgz#f90b82aefbd8ac174213abb338bd7ef848f0f5ae"
+  integrity sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA==
 
 fill-range@^7.0.1:
   version "7.0.1"
@@ -1916,6 +1926,15 @@ postcss@^8.1.6, postcss@^8.2.1, postcss@^8.3.11:
     picocolors "^1.0.0"
     source-map-js "^0.6.2"
 
+posthog-js@^1.15.3:
+  version "1.15.3"
+  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.15.3.tgz#45ecf69478d3a8586ec910f757fdc8e1d57c562a"
+  integrity sha512-yMFz24alQhmLB5eBz7kw9RzUogdq7r3gjTvbnvOCLL+wxBVs5rmlD14OZnCrfL2Nppph9oyEJl4hkIRPDiov8Q==
+  dependencies:
+    "@sentry/types" "^6.11.0"
+    fflate "^0.4.1"
+    rrweb-snapshot "^1.1.7"
+
 prettier@^2.3.2:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.4.1.tgz#671e11c89c14a4cfc876ce564106c4a6726c9f5c"
@@ -2120,6 +2139,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+rrweb-snapshot@^1.1.7:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/rrweb-snapshot/-/rrweb-snapshot-1.1.9.tgz#f8d0f560291a37dab00dc5ac6d9368f76208256f"
+  integrity sha512-kpoWi2gx1AmX2PZU8XNKMvIvh5WPSz9lKfyHs9GYvczYE2H7VNrmPf7+rDin8Y+HcJ9Tu7x9id4JOCD2PsSPQA==
 
 run-parallel@^1.1.9:
   version "1.2.0"

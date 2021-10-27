@@ -1,4 +1,4 @@
-import { FEATURE_FLAGS } from './posthog'
+import { FEATURE_FLAGS } from './constants'
 
 /**
  * Checks if a feature flag is enabeld.
