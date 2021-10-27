@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { Layout, Page, Text, Code, Link } from '@vercel/edge-functions-ui'
-import { SPLITS, track } from '@lib/split'
+import { FEATURE_FLAGS, track } from '@lib/posthog'
 
 export default function Marketing() {
   useEffect(() => {
-    track(SPLITS.NEW_MARKETING_PAGE, 'user', 'page_serve', null, {
+    track(FEATURE_FLAGS.NEW_MARKETING_PAGE, 'user', 'page_serve', null, {
       treatment: 'on',
     }).catch((error) => {
       console.error(

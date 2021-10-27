@@ -19,7 +19,7 @@ export async function isFeatureFlagEnabled(distinctUserId: string, featureName: 
 
   if (!res.ok) {
     throw new Error(
-      `Fetch request to retrieve the list of splits failed with: (${res.status}) ${res.statusText}`
+      `Fetch request to retrieve the ${featureName} flag status failed with: (${res.status}) ${res.statusText}`
     )
   }
 

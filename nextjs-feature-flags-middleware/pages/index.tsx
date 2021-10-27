@@ -7,7 +7,7 @@ import {
   Link,
   Button,
 } from '@vercel/edge-functions-ui'
-import { SPLITS } from '@lib/split'
+import { FEATURE_FLAGS } from '@lib/posthog'
 
 export default function Index() {
   const removeCookie = (name: string) => {
@@ -40,13 +40,13 @@ export default function Index() {
         <Button
           variant="secondary"
           className="mr-2.5"
-          onClick={() => removeCookie(`flag-${SPLITS.NEW_ABOUT_PAGE}`)}
+          onClick={() => removeCookie(`flag-${FEATURE_FLAGS.NEW_ABOUT_PAGE}`)}
         >
           Remove /about cookie & reload
         </Button>
         <Button
           variant="secondary"
-          onClick={() => removeCookie(`flag-${SPLITS.NEW_MARKETING_PAGE}`)}
+          onClick={() => removeCookie(`flag-${FEATURE_FLAGS.NEW_MARKETING_PAGE}`)}
         >
           Remove /marketing cookie & reload
         </Button>

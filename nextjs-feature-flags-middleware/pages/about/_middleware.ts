@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { isFeatureFlagEnabled } from '@lib/split-node'
-import { SPLITS } from '@lib/split'
+import { isFeatureFlagEnabled } from '@lib/posthog-node'
+import { FEATURE_FLAGS } from '@lib/posthog'
 
 export function middleware(req: NextRequest) {
   // Redirect paths that go directly to the variant
@@ -8,10 +8,10 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect('/about')
   }
 
-  const flagName = `flag-${SPLITS.NEW_ABOUT_PAGE}`
+  const flagName = `flag-${FEATURE_FLAGS.NEW_ABOUT_PAGE}`
   const cookie =
     req.cookies[flagName] ||
-    (isFeatureFlagEnabled('anonymous', SPLITS.NEW_ABOUT_PAGE) ? '1' : '0')
+    (isFeatureFlagEnabled('anonymous', FEATURE_FLAGS.NEW_ABOUT_PAGE) ? '1' : '0')
   const res = NextResponse.rewrite(cookie === '1' ? '/about/b' : '/about')
 
   // Add the cookie if it's not there

@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { Layout, Page, Text, Link } from '@vercel/edge-functions-ui'
-import { SPLITS, track } from '@lib/split'
+import { FEATURE_FLAGS, track } from '@lib/posthog'
 
 export default function About() {
   useEffect(() => {
-    track(SPLITS.NEW_ABOUT_PAGE, 'user', 'page_serve', null, {
+    track(FEATURE_FLAGS.NEW_ABOUT_PAGE, 'user', 'page_serve', null, {
       treatment: 'off',
     }).catch((error) => {
       console.error(
