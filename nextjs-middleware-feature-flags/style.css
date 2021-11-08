@@ -1,0 +1,103 @@
+body {
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-size: 14px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+input {
+  display: block;
+  width: 320px;
+  font-size: 16px;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+button {
+  cursor: pointer;
+}
+
+pre {
+  background: black;
+  color: white;
+  padding: 16px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+nav ul li {
+  height: 30px;
+}
+
+header h1, header h2 {
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 3em;
+}
+
+header h2 {
+  font-size: 1.5em;
+}
+
+header button {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+header, main, form {
+  margin-bottom: 30px;
+}
+
+button {
+  font-size: 1em;
+  background-color: blue;
+  border-color: blue;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+main code {
+  line-height: 1.5em;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+main pre {
+  margin-bottom: 60px;
+}
+
+.logo {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.logo a, .logo a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.signup-band {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: grey;
+  border-radius: 10px;
+  padding: 1.5em;
+  margin-bottom: 30px;
+}
