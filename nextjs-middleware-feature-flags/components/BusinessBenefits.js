@@ -4,7 +4,7 @@ function Benefit({headingText}) {
         <h3>{headingText}</h3>
         <div style={{display: "flex"}}>
             <p>Laboris exercitation deserunt enim ullamco. Sit sunt elit excepteur eiusmod dolor non proident commodo amet fugiat consectetur ex eiusmod elit.</p>
-            <img src="https://dummyimage.com/200x100/000/fff" style={{width: "200px", marginLeft: "20px"}} />
+            <img src="https://dummyimage.com/300x200/000/fff" style={{width: "300px", marginLeft: "20px"}} />
         </div>
         </>
     )
@@ -12,15 +12,15 @@ function Benefit({headingText}) {
 
 function BusinessBenefits() {
     return (
-        <>
-        <h2>Why Awesome API?</h2>
+        <section className="inner-container">
+            <h2>Why Awesome API?</h2>
 
-        <Benefit headingText="Flexible" />
+            <Benefit headingText="Flexible" />
 
-        <Benefit headingText="Scalable" />
+            <Benefit headingText="Scalable" />
 
-        <Benefit headingText="Global" />
-        </>
+            <Benefit headingText="Global" />
+        </section>
     )
 }
 

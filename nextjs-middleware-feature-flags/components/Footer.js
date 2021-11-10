@@ -1,6 +1,8 @@
 function Footer() {
     return (
-        <footer>©️Awesome API 2021</footer>
+        <div className="footer-wrapper">
+            <footer>&copy; Awesome API 2021</footer>
+        </div>
     )
 }
 

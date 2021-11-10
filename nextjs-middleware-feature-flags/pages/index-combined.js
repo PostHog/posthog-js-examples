@@ -7,7 +7,7 @@ import SignUpBand from '../components/SignUpBand'
 
 const Index = () => {
   return (
-    <div style={{ maxWidth: '520px', margin: '96px auto', fontSize: "14px" }}>
+    <div>
 
         <TopNav />
 

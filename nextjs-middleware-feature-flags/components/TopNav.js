@@ -12,8 +12,8 @@ function TopNav() {
                 <li>
                     <Link href="/auth">
                         <a>
-                            <button>
-                                SignUp
+                            <button className="cta-btn">
+                                Sign Up
                             </button>
                         </a>
                     </Link>

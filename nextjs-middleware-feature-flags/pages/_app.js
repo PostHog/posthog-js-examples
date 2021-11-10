@@ -27,10 +27,10 @@ export default function MyApp({ Component, pageProps }) {
     };
   }, [router.events])
   return (
-    <main>
+    <div className="container">
       <UserContextProvider supabaseClient={supabase}>
         <Component {...pageProps} />
       </UserContextProvider>
-    </main>
+    </div>
   )
 }

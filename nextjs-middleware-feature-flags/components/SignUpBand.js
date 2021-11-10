@@ -5,8 +5,8 @@ function SignUpBand() {
         <section className="signup-band">
             <Link href="/auth">
                 <a>
-                    <button>
-                        SignUp
+                    <button className="cta-btn cta-btn-alt">
+                        Sign Up
                     </button>
                 </a>
             </Link>

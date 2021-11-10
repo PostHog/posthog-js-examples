@@ -2,13 +2,13 @@ import Link from 'next/link'
 
 function Hero() {
     return (
-        <header>
-            <h1 className="logo">Awesome API</h1>
-            <h2>Instantly build awesome functionality</h2>
+        <header className="inner-container hero">
+            <h1>Craft Awesome APIs</h1>
+            <h2>Build / Deploy / Scale</h2>
             <Link href="/auth">
                 <a>
-                    <button>
-                        SignUp
+                    <button class="cta-btn">
+                        Sign Up
                     </button>
                 </a>
             </Link>
