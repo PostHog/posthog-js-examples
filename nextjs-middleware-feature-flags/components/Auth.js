@@ -120,7 +120,7 @@ function Auth(props) {
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">SignUp</button>
+            <button className="cta-btn" type="submit">SignUp</button>
           </form>
           <hr />
           <a onClick={() => setAuthView('sign_in')}>Already have an account, Sign in</a>
@@ -141,7 +141,7 @@ function Auth(props) {
               defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button type="submit">Send reset password instructions</button>
+            <button className="cta-btn" type="submit">Send reset password instructions</button>
           </form>
           <hr />
           <a onClick={() => setAuthView('sign_up')}>Don't have an account? Sign up</a>
@@ -160,7 +160,7 @@ function Auth(props) {
               defaultValue={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button type="submit">Send magic link</button>
+            <button className="cta-btn" type="submit">Send magic link</button>
           </form>
           <hr />
           <a onClick={() => setAuthView('sign_up')}>Don't have an account? Sign up</a>

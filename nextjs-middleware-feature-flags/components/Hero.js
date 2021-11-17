@@ -7,7 +7,7 @@ function Hero() {
             <h2>Build / Deploy / Scale</h2>
             <Link href="/auth">
                 <a>
-                    <button class="cta-btn">
+                    <button className="cta-btn">
                         Sign Up
                     </button>
                 </a>
