@@ -4,7 +4,7 @@ import { supabase } from '../utils/initSupabase'
 import { useEffect, useState } from 'react'
 import Auth from '../components/Auth'
 import { useUser } from '../lib/UserContext'
-import { initPostHog } from '../utils/initPostHog'
+import { usePostHogContext } from 'posthog-js/react'
 
 const fetcher = (url, token) =>
   fetch(url, {
@@ -18,12 +18,14 @@ const Index = () => {
   const { data, error } = useSWR(session ? ['/api/getUser', session.access_token] : null, fetcher)
   const [authView, setAuthView] = useState('sign_up')
 
-  const posthog = initPostHog()
+  const { client: posthog } = usePostHogContext()
 
-  if(user) {
-    posthog.identify(user.email, user)
-    posthog.capture('loggedIn')
-  }
+  useEffect(() => {
+    if(user) {
+      posthog.identify(user.email, user)
+      posthog.capture('loggedIn')
+    }
+  }, [user, posthog])
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {

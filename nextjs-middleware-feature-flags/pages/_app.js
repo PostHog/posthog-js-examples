@@ -4,15 +4,16 @@ import './../style.css'
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { PostHogProvider } from "posthog-js/react";
 import { initPostHog } from '../utils/initPostHog'
 
 export default function MyApp({ Component, pageProps }) {
-  
+
+  const posthog = initPostHog()
+
   const router = useRouter()
 
   useEffect(() => {
-    // Init for auto capturing
-    const posthog = initPostHog()
 
     const handleRouteChange = () => {
       if(typeof window !== 'undefined') {
@@ -26,11 +27,14 @@ export default function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange)
     };
   }, [router.events])
+  
   return (
     <div className="container">
-      <UserContextProvider supabaseClient={supabase}>
-        <Component {...pageProps} />
-      </UserContextProvider>
+      <PostHogProvider client={posthog}>
+        <UserContextProvider supabaseClient={supabase}>
+          <Component {...pageProps} />
+        </UserContextProvider>
+      </PostHogProvider>
     </div>
   )
 }
